@@ -7,8 +7,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
+import UserContextProvider from './contexts/UserContext';
 
 function App() {
   return (
@@ -16,22 +16,7 @@ function App() {
 
     <Router>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+      <UserContextProvider>
         <Switch>
           <Route path="/details">
             <Details />
@@ -43,6 +28,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+      </UserContextProvider>
       </div>
     </Router>
   );
